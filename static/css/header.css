@@ -1,0 +1,160 @@
+form.load,form.resign{
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    margin:auto;
+    height:350px;
+    width:380px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    padding:15px;
+    display:none;
+    background:#fff;
+    z-index:5555;
+}
+form.load>a,form.resign>a{
+    position:absolute;
+    bottom:5px;
+    right:5px;
+}
+form.load>span.del,form.resign>span.del{
+    position:absolute;
+    right:5px;
+    top:5px;
+    width:20px;
+    height:20px;
+    line-height:20px;
+    text-align:center;
+    display:block;
+    cursor:pointer;
+    font-size:25px;
+    transition:all .35s ease ;
+}
+form.load>span.del:hover,form.resign>span.del:hover{
+    transform:rotate(90deg);
+}
+form.load>div.check,form.resign>div.check{
+    overflow:hidden;
+}
+div.check>input{
+    width:32%;
+    float:left;
+}
+form.load>div.check>img{
+    width:60%;
+    float:right;
+}
+.errormessage{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:44px;
+    background:#000;
+    opacity:0;
+    display:none;
+    line-height:44px;
+    text-align:center;
+    animation:opacity 3s linear ;
+    color:#fff;
+    z-index:10000;
+}
+@keyframes opacity {
+    0%{
+        opacity:0;
+    }
+    10%{
+        opacity:1;
+    }
+    90%{
+        opacity:1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+header{
+    width:100%;
+    height:44px;
+    background:#BD4932;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:9999;
+}
+header>div{
+    width:1200px;
+    height:44px;
+    margin:0 auto;
+}
+header>div>div:first-child{
+    width:200px;
+    height:100%;
+    float:left;
+}
+header>div>div:first-child>h3{
+    width:200px;
+    height:100%;
+    line-height:44px;
+    cursor:pointer;
+}
+header>div>div:first-child>h3>a{
+    width:100%;
+    height:100%;
+}
+header>div>div:first-child>h3>a>img{
+    height:100%;
+    display:block;
+}
+header>div>div:last-child{
+    width:auto;
+    height:100%;
+    float:right;
+}
+header>div>div:last-child>a{
+    display:block;
+    padding:0 15px;
+    height:100%;
+    float:left;
+    line-height:44px;
+    color:#fff;
+    text-align:center;
+    transition:background .35s ease ;
+}
+header>div>div:last-child>span{
+    display:block;
+    padding:0 15px;
+    height:100%;
+    float:left;
+    line-height:44px;
+    color:#ccc;
+    text-align:center;
+    cursor:pointer;
+}
+header>div>div:last-child>a:hover{
+    background:#713124;
+    text-decoration: none;
+}
+body{
+    background:#F7F8FA;
+}
+
+div#top{
+    width:50px;
+    height:50px;
+    background:#BD4932;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    line-height:50px;
+    text-align:center;
+    cursor:pointer;
+    display:none;
+    color:#fff;
+    transition:all ease .35s ;
+}
+div#top:hover{
+    border-radius:50%;
+}

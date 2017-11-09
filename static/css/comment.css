@@ -1,0 +1,27 @@
+main{
+    width:1200px;
+    height:auto;
+    overflow:hidden;
+    margin:0 auto;
+    margin-top:44px;
+}
+main>h3{
+    border-bottom:1px solid #ccc;
+    padding-bottom:5px;
+    margin-bottom:15px;
+}
+div.left{
+    width:15%;
+    height:300px;
+    float:left;
+    box-sizing:border-box;
+    padding:10px;
+}
+div.right{
+    width:85%;
+    height:auto;
+    float:left;
+    padding:10px;
+    border-left:1px #ccc solid;
+    overflow:hidden;
+}

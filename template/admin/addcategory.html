@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{SELF_PATH}?d=admin&f=category&m=add" method="post">
+        <h3>上级导航栏</h3>
+        <select name="fcid" >
+            <option value="0">作为一级导航</option>
+            {$res}
+        </select>
+       <h3>添加栏目</h3>
+        <input type="text" name="sonname">
+        <input type="submit" value="确认提交">
+    </form>
+</body>
+</html>

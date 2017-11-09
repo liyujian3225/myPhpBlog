@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="{SELF_PATH}?d=admin&f=category&m=update" method="post">
+        <h3>所属栏目</h3>
+        <select name="fcid" >
+            <option value="0">作为一级导航</option>
+            {$res}
+        </select>
+        <h3>修改当前栏目</h3>
+        <input type="text" name="sonname" value='{$res1[0]["cname"]}'>
+        <input type="hidden" value='{$res1[0]["cid"]}' name="cid">
+        <input type="submit" value="确认提交">
+    </form>
+</body>
+</html>

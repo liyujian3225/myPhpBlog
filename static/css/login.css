@@ -1,0 +1,40 @@
+html,body{
+    width:100%;
+    height:100%;
+    position:relative;
+}
+body{
+    background-position:center;
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+form{
+    position:absolute;
+    right:200px;
+    top:100px;
+    width:300px;
+    height:auto;
+    background:rgba(0,0,0,0.5);
+    border-radius:5px;
+    padding:15px;
+    animation:all .35 ease;
+    overflow:hidden;
+}
+div.checkbox{
+    overflow:hidden;
+}
+div.checkbox>input{
+    width:40%;
+    float:left;
+}
+div.checkbox>img{
+    width:50%;
+    float:right;
+    cursor:pointer;
+}
+h3{
+    margin-bottom:15px;
+}
+h5{
+    color:red;
+}

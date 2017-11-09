@@ -1,0 +1,224 @@
+main{
+    width:700px;
+    margin:0 auto;
+    margin-top:100px;
+}
+main>h3{
+    text-align:center;
+    height:40px;
+    line-height:40px;
+}
+main>ul{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+main>ul>li:first-child{
+    width:100%;
+    height:48px;
+    margin-top:30px;
+    margin-bottom:40px;
+}
+main>ul>li:first-child>div:first-child{
+    height:48px;
+    width:48px;
+    float:left;
+    border-radius:5px;
+}
+main>ul>li:first-child>div:first-child>img{
+    height:48px;
+    width:48px;
+    display:block;
+    border-radius:5px;
+}
+main>ul>li:first-child>div:last-child{
+    height:48px;
+    width:500px;
+    float:left;
+    margin-left:10px;
+}
+main>ul>li:first-child>div:last-child>div{
+    height:24px;
+    line-height:24px;
+}
+main>ul>li:first-child>div:last-child>div:last-child>span{
+    height:24px;
+    padding-right: 10px;
+    display:block;
+    float:left;
+    cursor:pointer;
+}
+main>ul>li:first-child>div:last-child>div:first-child>span{
+    height:24px;
+    margin-right: 10px;
+    float:left;
+    line-height:24px;
+    cursor:pointer;
+    padding:0px;
+}
+span.focus{
+    border:1px solid #ccc;
+    text-align:center;
+    padding-left: 10px;
+    border-radius:12px;
+    font-size:14px;
+}
+span.focus:hover{
+    background:#ccc;
+}
+main>ul>li:nth-child(3){
+    margin-top:40px;
+    overflow:hidden;
+}
+main>ul>li:nth-child(3)>h3{
+    line-height:48px;
+    height:48px;
+}
+main>ul>li:nth-child(3)>div:nth-child(2){
+    position:relative;
+    overflow:hidden;
+}
+main>ul>li:nth-child(3)>div:nth-child(2)>div:last-child{
+    height:auto;
+    width:652px;
+    background:#F8F8F8;
+    border-radius:5px;
+    float:right;
+}
+main>ul>li:nth-child(3)>div:nth-child(2)>div:last-child>textarea{
+    display:block;
+    width:100%;
+    resize:vertical;
+}
+main>ul>li:nth-child(3)>div:nth-child(2)>div:first-child{
+    border-radius:50%;
+    width:38px;
+    height:38px;
+    position:absolute;
+    left:0;
+    top:0;
+}
+main>ul>li:nth-child(3)>div:nth-child(2)>div:first-child>img{
+    border-radius:50%;
+    width:38px;
+    height:38px;
+    display:block;
+}
+main>ul>li:nth-child(3)>div:nth-child(3){
+    width:100%;
+    height:50px;
+    position:relative;
+}
+main>ul>li:nth-child(3)>div:nth-child(3)>.messageSubmitBtn{
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+main>ul>li:nth-child(4){
+    margin-top:40px;
+    overflow:hidden;
+    width:100%;
+}
+main>ul>li:nth-child(4)>h3{
+    color:#BD4932;
+    font-size:14px;
+    height:40px;
+    line-height:40px;
+    border-bottom:1px solid #BD4932;
+}
+div.message-box{
+    margin-top:10px;
+    border-bottom: 1px #ddd dotted;
+}
+div.liuyan{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+}
+div.liuyan>div.photo-box{
+    height:30px;
+}
+div.liuyan>div.photo-box>.photo{
+    float:left;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    border:0;
+    margin-right:10px;
+}
+div.liuyan>div.photo-box>.photo>img{
+    display:block;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+}
+div.liuyan>div.photo-box>.name{
+    height:30px;
+    line-height:30px;
+    margin-left:20px;
+}
+div.liuyan>.message-con{
+    height:auto;
+    overflow:hidden;
+    box-sizing:border-box;
+    padding:10px;
+}
+div.liuyan>.bar{
+    height:40px;
+    position:relative;
+}
+div.liuyan>.bar>button{
+    bottom:5px;
+    right:0;
+    position:absolute;
+}
+div.replay{
+    border-bottom:1px dotted #BD4932;
+    margin-left:30px;
+    margin-bottom:5px;
+}
+div.replay>div.photo-box{
+    height:30px;
+}
+div.replay>div.photo-box>.photo{
+    float:left;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+    border:0;
+    margin-right:10px;
+}
+div.replay>div.photo-box>.photo>img{
+    display:block;
+    height:30px;
+    width:30px;
+    border-radius:50%;
+}
+div.replay>div.photo-box>.name{
+    height:30px;
+    line-height:30px;
+    margin-left:20px;
+}
+div.replay>.message-con{
+    height:auto;
+    overflow:hidden;
+    box-sizing:border-box;
+    padding:10px;
+}
+div.replay>.bar{
+    height:40px;
+    position:relative;
+}
+div.replay>.bar>button{
+    bottom:5px;
+    right:0;
+    position:absolute;
+}
+
+
+
+
+
+
+
+

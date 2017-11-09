@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台登录</title>
+    <link rel="stylesheet" href="{CSS_PATH}bootstrap.min.css">
+    <link rel="stylesheet" href="{CSS_PATH}reset.css">
+    <link rel="stylesheet" href="{CSS_PATH}login.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}jquery.validate.min.js"></script>
+    <script src="{JS_PATH}bootstrap.min.js"></script>
+    <script src="{JS_PATH}login.js"></script>
+</head>
+<body style="background-image:url('{IMG_PATH}1.jpg')">
+    <form  id="signupForm" >
+        <div class="form-group">
+            <h3>欢迎登录后台系统</h3>
+        </div>
+        <div class="error form-group"></div>
+        <div class="form-group">
+            <input type="text" class="form-control"  placeholder="请输入账号" name="zhanghao">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control"  placeholder="请输入密码" name="password">
+        </div>
+        <div class="checkbox">
+            <input type="text" name="checkcode" class="form-control" placeholder="输入验证码">
+            <img src="{SELF_PATH}?d=admin&f=login&m=code" alt="" onclick="this.src+='&Math.random(0,999)'">
+        </div>
+        <div class="form-group message">
+            <h5></h5>
+            <button type="button" class="btn btn-primary btn-block" >登录</button>
+        </div>
+    </form>
+</body>
+</html>

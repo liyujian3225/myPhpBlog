@@ -1,0 +1,103 @@
+{include 'header.html'}
+<link rel="stylesheet" href="{CSS_PATH}index.css">
+<ul class="art">
+    {foreach $arr as $v}
+    <li class="con">
+        <div>来自话题:{$v['cname']}</div>
+        <div>
+            <div>
+                <img src="{$v['img']}" alt="">
+            </div>
+            <div>{$v['mname']}</div>
+        </div>
+        <a href="index.php?d=index&f=show&m=init&sid={$v['sid']}">{$v['stitle']}</a>
+        <div>
+            <div>{$v['scon']}</div>
+            <div>
+                {if $v['simage']}
+                <img src="{$v['simage']}" alt="">
+                {else}
+                <img src="{IMG_PATH}aa.jpg" alt="">
+                {/if}
+            </div>
+        </div>
+        <div>
+            <span>
+                {foreach $arr4 as $m}
+                {if $m['sid']==$v['sid']}
+                {$m['count(sid)']}条评论
+                {/if}
+                {/foreach}
+
+
+
+            </span><span>点击量{$v['hits']}</span><span>{$v['stime']}</span>
+        </div>
+    </li>
+    {/foreach}
+
+    <li class="asi">
+        <div>
+            <h4>热点内容</h4>
+            <ul>
+                {foreach $arr1 as $k}
+                <li><a href="index.php?d=index&f=show&m=init&sid={$k['sid']}">{$k['stitle']}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+        <div>
+            <h4>评论最多</h4>
+            <ul>
+                {foreach $arr3 as $k}
+                <li><a href="index.php?d=index&f=show&m=init&sid={$k['sid']}">{$k['stitle']}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+    </li>
+</ul>
+<div class="mor">
+    <h3 class="more">点击查看更多</h3>
+</div>
+{include "footer.html"}
+<script>
+    let num=5;
+    $('.more').click(function(){
+        $.ajax({
+            url:'index.php?d=index&f=index&m=more',
+            data:{ 'num':num},
+            dataType:'json',
+            type:'post',
+            beforeSend:function(){
+                $('.more').html('拼命加载中···')
+            },
+            success:function(e){
+                $('.more').html('点击查看更多')
+                num+=5;
+                if(e.length==0){
+                    $('.more').html('我是有底线的')
+                }
+                e.forEach(function(value){
+                    $('<li class="con">').html(`
+        <div>来自话题:${ value.cname}</div>
+        <div>
+            <div>
+                <img src="${ value.img}" alt="">
+            </div>
+            <div>${ value.mname}</div>
+        </div>
+        <a href="index.php?d=index&f=show&m=init&sid=${ value.sid}">${ value.stitle}</a>
+        <div>
+            <div>${ value.scon}</div>
+            <div>
+                <img src="${ (value.simage)?value.simage:"{IMG_PATH}aa.jpg"}" alt="">
+            </div>
+        </div>
+        <div>
+            <a href="">19条评论</a><span>点击量${ value.hits}</span><span>${ value.stime}</span>
+        </div>
+                    `).insertBefore($('.asi'))
+                })
+            }
+        })
+    })
+</script>

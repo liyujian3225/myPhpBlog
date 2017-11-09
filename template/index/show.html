@@ -1,0 +1,222 @@
+{include 'header.html'}
+<link rel="stylesheet" href="{CSS_PATH}show.css">
+<main>
+<h3 class="stitle" mid="{$arr[0]['mid']}" me="{$mid}" sid="{$arr[0].sid}">{$arr[0]['stitle']}</h3>
+    <ul>
+        <li>
+            <div>
+                <img src="{$arr[0]['img']}" alt="">
+            </div>
+            <div>
+                <div>
+                    <span>{$arr[0]['mname']}</span>
+                    {if $status=="nologin"}
+                    <span  class="btn btn-primary guanzhu">关注</span>
+                    <span  class="btn btn-primary cancelguanzhu" style="display: none" >取消关注</span>
+                    {else if $status=="self"}
+                    <span  class="btn btn-primary guanzhu" style="display:none">关注</span>
+                    <span  class="btn btn-primary cancelguanzhu" style="display: none" >取消关注</span>
+                    {else if $status=="true"}
+                    <span  class="btn btn-primary guanzhu" style="display:none">关注</span>
+                    <span  class="btn btn-primary cancelguanzhu" >取消关注</span>
+                    {else if $status=="false"}
+                    <span  class="btn btn-primary guanzhu" >关注</span>
+                    <span  class="btn btn-primary cancelguanzhu" style="display:none">取消关注</span>
+                    {/if}
+                </div>
+                <div>
+                    <span>字数</span><span class="num"></span>
+                    <span>阅读</span><span class="hit" aa="{$arr[0]['sid']}">{$arr[0]['hits']+1}</span>
+                    <span>{$arr[0]['stime']}</span>
+                </div>
+            </div>
+        </li>
+        <li class="article">
+            {$arr[0]['scon']}
+        </li>
+        <li>
+            <h3>评论区</h3>
+            <div>
+                <div>
+                    {if $arr1==''}
+                    <img src="{IMG_PATH}bb.png" alt="">
+                    {else}
+                    <img src="{$arr1[0]['img']}" alt="">
+                    {/if}
+                </div>
+                <div>
+                    <textarea name=""  cols="20" rows="5" class="messageSubmitCon"></textarea>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary messageSubmitBtn">提交留言</button>
+            </div>
+        </li>
+        <li class="container">
+            <h3>全部评论(共有{$total}条留言)</span> </h3>
+            {foreach $messages as $v}
+            <div class="message-box">
+                <div class="liuyan" mid="{$v['mid1']}" pid="{$v['id']}">
+                    <div class="photo-box">
+                        <div class="photo">
+                            <img src="{$v['img']}" alt="">
+                        </div>
+                        <div class="name">
+                            {$v['mname']}
+                        </div>
+                    </div>
+                    <div class="message-con">
+                        {$v["con"]}
+                    </div>
+                    <div class="bar">
+                        <button class="btn btn-xs replayBtn" type="submit">回复</button>
+                    </div>
+                </div>
+
+                {foreach $v["son"] as $v1}
+                <div class="replay">
+                    <div class="photo-box">
+                        <div class="photo">
+                            <img src="{$v1['img']}" alt="">
+                        </div>
+                        <div class="name">
+                            {$v1['mname']}
+                        </div>
+                    </div>
+                    <div class="message-con">
+                        {$v1["con"]}
+                    </div>
+                    <div class="bar">
+                        <button class="btn btn-xs replayBtn" type="submit">回复</button>
+                    </div>
+                </div>
+                {/foreach}
+
+                <div class="replay-box" style="display:none">
+                    <textarea class="form-control messageReplayCon" rows="3"></textarea>
+                    <button class="btn btn-default messageReplayBtn" type="submit">回复</button>
+                    <button class="btn btn-default" type="submit">取消</button>
+                </div>
+            </div>
+            {/foreach}
+        </li>
+    </ul>
+</main>
+{include "footer.html"}
+<script>
+    //获取文章字数
+    let num=0;
+    $('.article>p').each(function(index,value){
+        num+=$(value).html().length;
+    })
+    $('.num').html(num);
+    //文章点击量
+    let hit=$('.hit').html();
+    let sid=$('.hit')[0].getAttribute('aa');
+    $.ajax({
+        url:'index.php?d=index&f=show&m=hit',
+        data:{ 'hit':hit,'sid':sid},
+        type:'post'
+    })
+    //处理关注事务
+    //添加关注
+    $(".guanzhu").click(function(){
+        $.ajax({
+            url:"index.php?d=index&f=guanzhu&m=add",
+            type:"post",
+            data:{ near:location.href,mid:$(".stitle").attr("mid")},
+            success:function(e){
+                if(e==="no"){
+                    $(".load").css("display","block");
+                }else if(e==="ok"){
+                     $(".guanzhu").css("display","none");
+                     $(".cancelguanzhu").css("display","block");
+                }
+            }
+        })
+    })
+    //取消关注
+    $(".cancelguanzhu").click(function(){
+        $.ajax({
+            url:"index.php?d=index&f=guanzhu&m=del",
+            type:"post",
+            data:{ mid:$(".stitle").attr("mid")},
+            success:function(e){
+                if(e==="ok"){
+                    $(".guanzhu").css("display","block");
+                    $(".cancelguanzhu").css("display","none");
+                }
+            }
+        })
+    })
+    //添加留言
+    $(".messageSubmitBtn").click(function () {
+        let me=$(".stitle").attr("me");
+        $.ajax({
+            url:"index.php?d=index&f=message&m=add",
+            type:"post",
+            data:{ near:location.href,"mid":$(".stitle").attr("mid"),"sid":$(".stitle").attr("sid"),"con":$(".messageSubmitCon").val()},
+            success:function(e){
+
+                if(e=="no"){
+                    $(".load").css("display","block");
+                }else{
+                    $(`<div class="message-box">
+                    <div class="liuyan" mid="`+me+`" pid="`+e+`">
+                        <div class="photo-box">
+                            <div class="photo"><img src="" alt=""></div>
+                            <div class="name">李雨健</div>
+                        </div>
+                        <div class="message-con">`+$(".messageSubmitCon").val()+`</div>
+                        <div class="bar">
+                            <button class="btn btn-xs replayBtn" type="submit">回复</button>
+                        </div>
+                    </div>
+                    <div class="replay-box" style="display:none">
+                        <textarea class="form-control messageReplayCon" rows="3"></textarea>
+                        <button class="btn btn-default messageReplayBtn" type="submit">回复</button>
+                        <button class="btn btn-default" type="submit">取消</button>
+                    </div>
+</div>`).appendTo(".container");
+                }
+            }
+        })
+
+    })
+
+    //留言区的回复按钮
+    $(".container").delegate(".replayBtn","click",function(){
+        $(this).parents(".message-box").find(".replay-box").toggle();
+    })
+
+    //点击回复按钮
+    $(".container").delegate(".messageReplayBtn","click",function(){
+        //回复的内容框
+        let messageReplayCon=$(this).parents(".message-box").find(".messageReplayCon");
+        //留言区域
+        let liuyan=$(this).parents(".message-box").find(".liuyan");
+        //回复的盒子
+        let replayBox=$(this).parents(".message-box").find(".replay-box");
+        $.ajax({
+            url:"index.php?d=index&f=message&m=replay",
+            type:"post",
+            data:{ near:location.href,mid:liuyan.attr("mid"),sid:$(".stitle").attr("sid"),"con":messageReplayCon.val(),"pid":liuyan.attr("pid")},
+            success:function(e){
+                if(e=="no"){
+                    $(".load").css("display","block");
+                }else{
+                    $(`<div class="replay">
+                            <div class="photo-box">
+                                 <div class="photo"></div>
+                                 <div class="name"></div>
+                            </div>
+                            <div class="message-con">`+messageReplayCon.val()+ `</div>
+                            <div class="bar">
+                                <button class="btn btn-xs replayBtn" type="submit">回复</button>
+                            </div>
+                    </div>`).insertBefore(replayBox);
+                }
+            }
+        })
+    })
+</script>

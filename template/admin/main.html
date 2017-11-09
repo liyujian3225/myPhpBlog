@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后台主页</title>
+    <link rel="stylesheet" href="{CSS_PATH}bootstrap.min.css">
+    <link rel="stylesheet" href="{CSS_PATH}reset.css">
+    <link rel="stylesheet" href="{CSS_PATH}main.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}bootstrap.min.js"></script>
+    <script src="{JS_PATH}main.js"></script>
+</head>
+<body>
+<nav>
+    <div>
+        <h1>博客后台管理系统</h1>
+    </div>
+    <div>
+        <div class="tim">
+
+        </div>
+        <div class="welcome">
+            <span>欢迎</span>
+            <span>{$user}</span>
+            <span>登录本系统</span>
+        </div>
+        <div class="loadout">
+            <a href="{SELF_PATH}?d=index&f=index&m=init">跳转主页</a>
+            <a href="{SELF_PATH}?d=admin&f=login&m=logout">点击注销</a>
+        </div>
+    </div>
+</nav>
+<main>
+    <div>
+        <ul>
+            {if $role==1}
+            <li>
+                <h6>
+                    用户管理
+                </h6>
+                <ul>
+                    <li>
+                        <a href="{SELF_PATH}?d=admin&f=user&m=display" target="display">
+                            编辑用户
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h6>角色管理</h6>
+                <ul>
+                    <li>
+                        <a href="{SELF_PATH}?d=admin&f=role&m=display" target="display">
+                            编辑角色
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            {/if}
+            <li>
+                <h6>前台会员管理</h6>
+                <ul>
+                    <li>
+                        <a href="javascript:;" target="display">
+                            添加内容
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" target="display">
+                            管理内容
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h6>分类管理</h6>
+                <ul>
+                    <li>
+                        <a href="{SELF_PATH}?d=admin&f=category&m=init" target="display">
+                            添加分类
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{SELF_PATH}?d=admin&f=category&m=manage" target="display">
+                            编辑分类
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h6>内容管理</h6>
+                <ul>
+                    <li>
+                        <a href="{SELF_PATH}?d=admin&f=lists&m=add" target="display">
+                            审核内容
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h6>推荐位管理</h6>
+                <ul>
+                    <li>
+                        <a href="javascript:;" target="display">
+                            栏目暂无
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" target="display">
+                            栏目暂无
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <iframe src="{SELF_PATH}?d=admin&f=login&m=welcome"  frameborder="0" name="display">
+
+        </iframe>
+    </div>
+</main>
+</body>
+</html>

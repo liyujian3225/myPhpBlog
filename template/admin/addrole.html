@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_PATH}bootstrap.min.css">
+    <link rel="stylesheet" href="{CSS_PATH}reset.css">
+    <link rel="stylesheet" href="{CSS_PATH}addrole.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}bootstrap.min.js"></script>
+</head>
+<body>
+<div id='box'>
+    <h2>角色管理</h2>
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <tr>
+            <th>角色名</th>
+            <th>角色rnum</th>
+            <th>操作</th>
+        </tr>
+        {foreach $arr as $v}
+        <tr id={$v['rid']}>
+            <td>{$v['rname']}</td>
+            <td>{$v['rnum']}</td>
+            <td class="del">删除</td>
+        </tr>
+        {/foreach}
+    </table>
+    <div class="plus">+</div>
+    <p>
+        使用注意事项
+        <br>
+        1.修改超级管理员请改为1,会员请改2
+        <br>
+        2.超级管理员可对后台用户进行编辑,普通会员仅可以查看后台用户，没有编辑权限！
+    </p>
+</div>
+</body>
+<script>
+    $('.del').click(function(){
+        let rid=$(this).parent('tr').attr('id');
+        $.ajax({
+            url:'index.php?d=admin&f=role&m=del',
+            data:{'rid':rid},
+            type:'post',
+            success:function(){
+
+            }
+        })
+    })
+</script>

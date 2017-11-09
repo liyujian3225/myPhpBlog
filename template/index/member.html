@@ -1,0 +1,144 @@
+{include 'header.html'}
+<!--把相应的变量引入到这个页面-->
+<link rel="stylesheet" href="{CSS_PATH}member.css">
+<script src="{JS_PATH}member.js"></script>
+<form class="updatemessage">
+    <div class="del">+</div>
+    <ul>
+        <li>
+            <div class="form-group">
+                <label>姓名</label>
+                <input class="form-control" value="{$name}" name="mname">
+            </div>
+            <div class="form-group">
+                <label>邮箱</label>
+                <input class="form-control" value="{$res[0]['email']}" name="email">
+            </div>
+            <div class="form-group">
+                <label>性别</label>
+                <input class="form-control" value="{$res[0]['sex']}" name="sex">
+            </div>
+            <div class="form-group">
+                <label>家庭住址</label>
+                <input class="form-control" value="{$res[0]['home']}" name="home">
+            </div>
+        </li>
+        <li>
+            <div class="form-group">
+                <label>QQ号码</label>
+                <input class="form-control" value="{$res[0]['QQ']}" name="QQ">
+            </div>
+            <div class="form-group">
+                <label>婚否</label>
+                <input class="form-control" value="{$res[0]['marry']}" name="marry">
+            </div>
+            <div class="form-group">
+                <label>自我介绍</label>
+                <input class="form-control" value="{$res[0]['speak']}" name="speak">
+            </div>
+            <div class="form-group">
+                <label>修改头像</label>
+                <input id='imgurl' type="hidden" name="img">
+                <br>
+                <div id="change">
+                    <input type="file">
+                </div>
+            </div>
+        </li>
+    </ul>
+    <button type="button" class="btn btn-primary btn-sm btn-block upmessage">点击修改信息</button>
+</form>
+<section>
+    <main>
+        <h3>欢迎你，{$name}</h3>
+        <div class="home">
+            <ul>
+                <li>
+                    {if $res[0]['img']}
+                    <img id='img' src="{$res[0]['img']}" alt="">
+                    {else}
+                    <img id='img' src="{IMG_PATH}bb.png" alt="">
+                    {/if}
+
+                    <!--<img id='img' src="{$res[0]['img']}" alt="">-->
+                    <div id="progress"></div>
+                </li>
+            </ul>
+            <ul>
+                <li>{$name}的个人信息</li>
+                <li><span>姓名:</span><span>{$name}</span></li>
+                <li><span>性别:</span><span>{$res[0]['sex']}</span></li>
+                <li><span>家乡:</span><span>{$res[0]['home']}</span></li>
+                <li><span>婚姻:</span><span>{$res[0]['marry']}</span></li>
+                <li><span>自我介绍:</span><span>{$res[0]['speak']}</span></li>
+                <li><span>电话号码:</span><span>{$res[0]['tele']}</span></li>
+                <li><span>QQ号码:</span><span>{$res[0]['QQ']}</span></li>
+                <li><span>邮箱:</span><span>{$res[0]['email']}</span></li>
+                <li><a class='submitmessage' href="">点击完善个人信息</a></li>
+            </ul>
+        </div>
+        <aside class="guanzhu">
+            <div>
+                <h3>关注我的人</h3>
+                <ul>
+                    {foreach $arr1 as $v}
+                    <li>
+                        <div>
+                            {if $v['img']}
+                            <img src="{$v['img']}" alt="">
+                            {else}
+                            <img src="{IMG_PATH}bb.png" alt="">
+                            {/if}
+                        </div>
+                        <div>{$v['mname']}</div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div>
+                <h3>我关注的人</h3>
+                <ul>
+                    {foreach $arr2 as $v}
+                    <li>
+                        <div>
+                            <img src="{$v['img']}" alt="">
+                        </div>
+                        <div>{$v['mname']}</div>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </aside>
+    </main>
+    <h3>{$name}的最新动态</h3>
+    <ul>
+        {foreach $arr as $v}
+        <li>
+            <div>来自话题:{$v['cname']}</div>
+            <div>
+                <div>
+                    <img src="{$res[0]['img']}" alt="">
+                </div>
+                <div>{$res[0]['mname']}</div>
+            </div>
+            <a href="index.php?d=index&f=show&m=init&sid={$v['sid']}">{$v['stitle']}</a>
+            <div>
+                <div>{$v['scon']}</div>
+                <div>
+                    {if $v['simage']}
+                    <img src="{$v['simage']}" alt="">
+                    {else}
+                    <img src="{IMG_PATH}aa.jpg" alt="">
+                    {/if}
+                </div>
+            </div>
+            <div>
+                <a href="">19条评论</a><span>点击量{$v['hits']}</span><span>{$v['stime']}</span>
+            </div>
+        </li>
+        {/foreach}
+
+    </ul>
+</section>
+
+{include "footer.html"}

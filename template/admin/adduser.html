@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{CSS_PATH}bootstrap.min.css">
+    <link rel="stylesheet" href="{CSS_PATH}reset.css">
+    <link rel="stylesheet" href="{CSS_PATH}adduser.css">
+    <script src="{JS_PATH}jquery.js"></script>
+    <script src="{JS_PATH}bootstrap.min.js"></script>
+    <script src="{JS_PATH}adduser.js"></script>
+</head>
+<body>
+    <div id='box'>
+        <h2>编辑后台用户</h2>
+        <table class="table table-striped table-bordered table-hover table-condensed">
+            <tr>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>权限</th>
+                <th>操作</th>
+            </tr>
+            {foreach $result as $v}
+            <tr id={$v['uid']}>
+                <td type="uname">{$v['uname']}</td>
+                <td type="upass">点击修改密码</td>
+                <td type="urole">
+                    {if $v['role']==1}
+                    超级管理员
+                    {elseif $v['role']==2}
+                    会员
+                    {/if}
+                </td>
+                <td class="del">删除</td>
+            </tr>
+            {/foreach}
+        </table>
+        <div class="plus">+</div>
+        <p>
+            使用注意事项
+            <br>
+            1.修改超级管理员请改为1,会员请改2
+            <br>
+            2.超级管理员可对后台用户进行编辑,普通会员仅可以查看后台用户，没有编辑权限！
+            <br>
+            3.删除用户时请先刷新界面
+            <br>
+            4.默认密码为123456，修改密码只能为6个数字！
+        </p>
+    </div>
+
+</body>
+</html>
